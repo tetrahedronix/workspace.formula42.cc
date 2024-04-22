@@ -1,4 +1,4 @@
-# PDF Workshop
+# Formula 42 Workshop
 
-A collection of formula42.cc articles and books in pdf format licensed with
-[GNU FDL](https://www.gnu.org/licenses/fdl-1.3.html). 
+[`it/ebook`](./it/ebooks/)| [`en/ebook`](./en/ebooks/) A collection of
+formula42.cc articles, books in pdf format licensed with [GNU FDL](https://www.gnu.org/licenses/fdl-1.3.html). 

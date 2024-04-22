@@ -4,10 +4,12 @@
 
 1. [`introduzione`](./introduzione/) La directory introduzione contiene una
 serie di esercizi introduttivi in linguaggio Go che coprono vari concetti
-fondamentali del linguaggio.
+fondamentali dell'informatica.
 2. [`automi`](./automi/) La directory automi contiene una serie di esercizi
 che si concentrano sulla teoria degli automi, un campo fondamentale
 nell'informatica teorica.
+3. [`moduli`](./moduli/) Introduzione ai moduli in Go, una caratteristica
+importante per la gestione delle dipendenze e la distribuzione dei pacchetti.
 
 ## Laboratorio di programmazione in Golang.
 

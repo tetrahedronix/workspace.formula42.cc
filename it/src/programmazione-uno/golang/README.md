@@ -3,6 +3,7 @@
 ## Indice
 
 1. [`introduzione`](./introduzione/)
+2  [`automi`](./automi/)
 
 ## Laboratorio di programmazione in Golang.
 

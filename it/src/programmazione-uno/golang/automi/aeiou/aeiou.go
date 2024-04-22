@@ -15,7 +15,7 @@
 //
 // Note per il Copyright:
 //   - l'automa searchPattern è rilasciato sotto GNU GPL.
-//   - l'implentazione dell'automa findChar è una traduzione in Golang
+//   - l'implementazione dell'automa findChar è una traduzione in Golang
 //     dell'automa findChar dell'opera "Foundations of Computer Science"
 //     di Aho e Ullmann.
 package main
@@ -31,14 +31,14 @@ import (
 // La funzione readFileToBuffer legge il contenuto di un file dato il suo nome
 // e restituisce il contenuto come un buffer di byte.
 func readFileToBuffer(filename string) ([]byte, error) {
-	// Apre il file in lettura
+	// Apre il file in lettura.
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
 	}
 	defer file.Close()
 
-	// Legge il contenuto del file in un buffer
+	// Legge il contenuto del file in un buffer.
 	buffer, err := ioutil.ReadAll(file)
 	if err != nil {
 		return nil, err
@@ -51,27 +51,27 @@ func readFileToBuffer(filename string) ([]byte, error) {
 // la funzione searchPattern per determinare se ogni parola ha le vocali in
 // ordine lessicografico.
 func stringsFromBuffer(buffer []byte) {
-	// Creazione di un nuovo reader basato sul buffer
+	// Creazione di un nuovo reader basato sul buffer.
 	reader := bytes.NewReader(buffer)
 
-	// Creazione di un nuovo scanner che leggerà dal reader
+	// Creazione di un nuovo scanner che leggerà dal reader.
 	scanner := bufio.NewScanner(reader)
 
-	// Impostazione dello scanner per scansionare le parole
+	// Impostazione dello scanner per scansionare le parole.
 	scanner.Split(bufio.ScanWords)
 
-	// Ciclo finché ci sono parole da leggere
+	// Ciclo finché ci sono parole da leggere.
 	for scanner.Scan() {
-		// Legge la parola dallo scanner
+		// Legge la parola dallo scanner.
 		word := scanner.Text()
 
 		// Chiama la funzione searchPattern per determinare se la parola ha le
-		// vocali in ordine lessicografico
+		// vocali in ordine lessicografico.
 		searchPattern(word)
 		//testWord(word)
 	}
 
-	// Controlla se ci sono errori durante la scansione
+	// Controlla se ci sono errori durante la scansione.
 	if err := scanner.Err(); err != nil {
 		fmt.Printf("Error reading buffer: %v\n", err)
 	}
@@ -108,32 +108,43 @@ func stringsFromBuffer(buffer []byte) {
 func searchPattern(w string) bool {
 
 	if len(w) == 0 {
-		return true // Se la parola è vuota, restituisce true
+		return true // Se la parola è vuota, restituisce true.
 	}
 
 	var q rune
 
 	for _, r := range w {
+
 		switch q {
 		case 0:
+			// Passa dallo stato q0 allo stato q su input r.
 			q = gotoQ0(r)
 		case 1:
+			// Passa dallo stato q1 allo stato q su input r.
 			q = gotoQ1(r)
 		case 2:
+			// Passa dallo stato q2 allo stato q su input r.
 			q = gotoQ2(r)
 		case 3:
+			// Passa dallo stato q3 allo stato q su input r.
 			q = gotoQ3(r)
 		case 4:
+			// Passa dallo stato q4 allo stato q su input r.
 			q = gotoQ4(r)
 		case 5:
+			// Rimani nello stato di accettazione 5.
 			q = 5
 		}
 
+		// Se l'automa si trova nello stato q6 di non accettazione, restituire
+		// falso (la parola è rifiutata).
 		if q == 6 {
 			return false
 		}
 	}
 
+	// Se l'automa termina l'esecuzione nello stato di accettazione 5,
+	// restituire vero (la parola è accettata).
 	return q == 5
 }
 
@@ -141,29 +152,29 @@ func searchPattern(w string) bool {
 func gotoQ0(r rune) rune {
 
 	if r == 'a' {
-		// Transita allo stato q1
+		// Transita allo stato q1.
 		return 1
 	}
 
 	if r == 'e' || r == 'i' || r == 'o' || r == 'u' {
-		// Transita allo stato q6 di non accettazione
+		// Transita allo stato q6 di non accettazione.
 		return 6
 	}
 
-	// Mantieni lo stato q0
+	// Mantieni lo stato q0.
 	return 0
 }
 
-// gotoQ1 definisce le transizione dell'automa quando si trova nello stato q1
+// gotoQ1 definisce le transizione dell'automa quando si trova nello stato q1.
 func gotoQ1(r rune) rune {
 
 	if r == 'e' {
-		// Transita allo stato q2
+		// Transita allo stato q2.
 		return 2
 	}
 
 	if r == 'i' || r == 'o' || r == 'u' {
-		// Transita allo stato q6 di non accettazione
+		// Transita allo stato q6 di non accettazione.
 		return 6
 	}
 
@@ -171,49 +182,49 @@ func gotoQ1(r rune) rune {
 	return 1
 }
 
-// gotoQ2 definisce la transizione dell'automa quando si trova nello stato q2
+// gotoQ2 definisce la transizione dell'automa quando si trova nello stato q2.
 func gotoQ2(r rune) rune {
 
 	if r == 'i' {
-		// Transita allo stato q3
+		// Transita allo stato q3.
 		return 3
 	}
 
 	if r == 'o' || r == 'u' {
-		// Transita allo stato q6 di non accettazione
+		// Transita allo stato q6 di non accettazione.
 		return 6
 	}
 
-	// Mantieni lo stato q2
+	// Mantieni lo stato q2.
 	return 2
 }
 
-// gotoQ3 definisce la transizione dell'automa quando si trova nello stato q3
+// gotoQ3 definisce la transizione dell'automa quando si trova nello stato q3.
 func gotoQ3(r rune) rune {
 
 	if r == 'o' {
-		// Transita allo stato q4
+		// Transita allo stato q4.
 		return 4
 	}
 
 	if r == 'u' {
-		// Transita allo stato q6 di non accettazione
+		// Transita allo stato q6 di non accettazione.
 		return 6
 	}
 
-	// Mantieni lo stato q3
+	// Mantieni lo stato q3.
 	return 3
 }
 
-// gotoQ4 definisce la transizione dell'automa quando si trova nello stato q4
+// gotoQ4 definisce la transizione dell'automa quando si trova nello stato q4.
 func gotoQ4(r rune) rune {
 
 	if r == 'u' {
-		// Transita allo stato di accettazione q5
+		// Transita allo stato di accettazione q5.
 		return 5
 	}
 
-	// Mantieni lo stato q4
+	// Mantieni lo stato q4.
 	return 4
 }
 
@@ -223,13 +234,13 @@ func gotoQ4(r rune) rune {
 func findChar(s string, r rune) (i int, b bool) {
 	// Cicla attraverso la stringa 's'
 	for i, c := range s {
-		// Controlla se il carattere corrente è uguale a 'r'
+		// Controlla se il carattere corrente è uguale a 'r'.
 		if c == r {
-			// Se è stato trovato il carattere, restituisce l'indice e true
+			// Se è stato trovato il carattere, restituisce l'indice e true.
 			return i, true
 		}
 	}
-	// Se il carattere non è stato trovato, restituisce 0 e false
+	// Se il carattere non è stato trovato, restituisce 0 e false.
 	return i, false
 }
 
@@ -249,36 +260,37 @@ func findChar(s string, r rune) (i int, b bool) {
 func testWord(w string) bool {
 	// Cerca la posizione della lettera 'a' nella parola 'w'
 	if i, ok := findChar(w[0:], 'a'); ok {
-		// Cerca la posizione della lettera 'e' nella parte della parola dopo la lettera 'a'
+		// Cerca la posizione della lettera 'e' nella parte della parola dopo la lettera 'a'.
 		if i, ok := findChar(w[i:], 'e'); ok {
-			// Cerca la posizione della lettera 'i' nella parte della parola dopo la lettera 'e'
+			// Cerca la posizione della lettera 'i' nella parte della parola dopo la lettera 'e'.
 			if i, ok := findChar(w[i:], 'i'); ok {
-				// Cerca la posizione della lettera 'o' nella parte della parola dopo la lettera 'i'
+				// Cerca la posizione della lettera 'o' nella parte della parola dopo la lettera 'i'.
 				if i, ok := findChar(w[i:], 'o'); ok {
-					// Cerca la posizione della lettera 'u' nella parte della parola dopo la lettera 'o'
+					// Cerca la posizione della lettera 'u' nella parte della parola dopo la lettera 'o'.
 					if _, ok := findChar(w[i:], 'u'); ok {
-						// Se tutte le vocali sono state trovate in ordine, restituisce true
+						// Se tutte le vocali sono state trovate in ordine, restituisce true.
 						return true
 					}
 				}
 			}
 		}
 	}
-	// Se la parola non contiene tutte e cinque le vocali in ordine, restituisce false
+	// Se la parola non contiene tutte e cinque le vocali in ordine,
+	// restituisce false.
 	return false
 }
 
 func main() {
-	// Verifica se è stato fornito il nome del file come argomento
+	// Verifica se è stato fornito il nome del file come argomento.
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: go run main.go <filename>")
 		os.Exit(1)
 	}
 
-	// Ottiene il nome del file dall'argomento della riga di comando
+	// Ottiene il nome del file dall'argomento della riga di comando.
 	filename := os.Args[1]
 
-	// Legge il contenuto del file in un buffer di byte
+	// Legge il contenuto del file in un buffer di byte.
 	buffer, err := readFileToBuffer(filename)
 	if err != nil {
 		fmt.Printf("Error reading file: %v\n", err)

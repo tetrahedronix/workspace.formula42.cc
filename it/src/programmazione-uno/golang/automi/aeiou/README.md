@@ -50,6 +50,30 @@ file soddisfa i criteri di accettazione dell'automa e stampa il risultato.
 In sostanza, il programma serve a verificare se le parole contenute in un file
 rispettano un certo schema di presenza delle vocali in ordine lessicografico.
 
+## Diagramma di transizione
+
+![Diagramma di transizione automa `aeiou`](./asset/diagramma.svg)
+
+## Tabella di transizione
+
+```
+       |   a   |   e   |   i   |   o   |   u   |  Σ\{a,e,i,o,u}
+=======|=======|=======|=======|=======|=======|===========
+ +q0   |  q1   |  q6   |  q6   |  q6   |  q6   |    q0
+-----------------------------------------------------------
+  q1   |  q1   |  q2   |  q6   |  q6   |  q6   |    q1
+-----------------------------------------------------------
+  q2   |  q2   |  q2   |  q3   |  q6   |  q6   |    q2
+-----------------------------------------------------------
+  q3   |  q3   |  q3   |  q3   |  q4   |  q6   |    q3
+-----------------------------------------------------------
+  q4   |  q4   |  q4   |  q4   |  q4   |  q5   |    q4
+-----------------------------------------------------------
+ *q5   |  q5   |  q5   |  q5   |  q5   |  q5   |    q5
+ -----------------------------------------------------------
+  q6   |  q6   |  q6   |  q6   |  q6   |  q6   |    q6
+```
+
 ## Esempi
 
 Esempi di parole accettate dall'automa

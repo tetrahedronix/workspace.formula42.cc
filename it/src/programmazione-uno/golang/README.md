@@ -11,7 +11,7 @@ nell'informatica teorica.
 3. [`moduli`](./moduli/) Introduzione ai moduli in Go, una caratteristica
 importante per la gestione delle dipendenze e la distribuzione dei pacchetti.
 
-## Laboratorio di programmazione in Golang.
+## Laboratorio di programmazione in Go
 
 1. **Introduzione al linguaggio Go**
    - Breve storia e contesto del linguaggio.

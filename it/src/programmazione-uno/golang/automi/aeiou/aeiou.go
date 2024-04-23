@@ -132,12 +132,13 @@ func searchPattern(w string) bool {
 			// Passa dallo stato q4 allo stato q su input r.
 			q = gotoQ4(r)
 		case 5:
-			// Rimani nello stato di accettazione 5.
+			// Rimane nello stato di accettazione 5.
 			q = 5
 		}
 
 		// Se l'automa si trova nello stato q6 di non accettazione, restituire
-		// falso (la parola è rifiutata).
+		// falso (la parola è rifiutata). Questo controllo è necessario per
+		// interrompere l'analisi.
 		if q == 6 {
 			return false
 		}

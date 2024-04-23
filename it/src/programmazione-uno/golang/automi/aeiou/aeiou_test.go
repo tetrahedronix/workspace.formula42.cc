@@ -14,7 +14,7 @@ func TestSearchPattern(t *testing.T) {
 		word     string // Parola da testare
 		expected bool   // Valore atteso restituito dalla funzione searchPattern
 	}{
-		{"", true},
+		{"", false},
 		{"abstemious", true}, // Testa una parola che contiene tutte e cinque le vocali
 		{"aeiou", true},      // Testa una parola che contiene tutte e cinque le vocali in ordine
 		{"aeioua", true},     // Testa una parola che contiene tutte e cinque le vocali in ordine

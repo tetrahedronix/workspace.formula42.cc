@@ -49,3 +49,22 @@ file soddisfa i criteri di accettazione dell'automa e stampa il risultato.
 
 In sostanza, il programma serve a verificare se le parole contenute in un file
 rispettano un certo schema di presenza delle vocali in ordine lessicografico.
+
+## Esempi
+
+Esempi di parole accettate dall'automa
+
+1. `""`. La parola vuota ε non è accettata dall'automa. In una implementazione
+di un automa deterministico per riconoscere le vocali in ordine lessicografico,
+non è prevista l'accettazione della parola vuota ε. Questo è dovuto al fatto che
+un automa deterministico opera su una serie di stati e transizioni definite,
+senza ε-transizioni che consentono il passaggio diretto tra gli stati senza
+input. Poiché la parola vuota non contiene alcun input, non esiste uno stato
+di accettazione che possa riconoscerla. Di conseguenza, l'automa `aeiou` non
+accetta tale parola e opera esclusivamente su stringhe non vuote contenenti
+le vocali in ordine lessicografico. Nella sua implementazione viene aggiunto
+uno *stato fittizio* che rappresenta una situazione di non-accettazione
+raggiungibile dall'inizio solo se l'input è la parola vuota ε, senza 
+violare la definizione di automa a stati finiti deterministico.
+
+2. 

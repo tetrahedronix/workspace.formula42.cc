@@ -1,4 +1,4 @@
-# golang
+# Linguaggio Go
 
 ## Indice
 

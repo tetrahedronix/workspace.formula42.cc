@@ -27,6 +27,7 @@ func TestSearchPattern(t *testing.T) {
 		{"sacrilegious", false}, // Testa un'altra parola che contiene tutte e cinque le vocali
 		{"uoieia", false},       // Testa una parola che contiene tutte le vocali in ordine opposto al lessicografico
 		{"zoo", false},          // Testa una parola che non contiene tutte e cinque le vocali in ordine
+		{"aabeapidou", false},
 	}
 
 	// Cicla su ogni test

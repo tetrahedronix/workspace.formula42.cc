@@ -1,3 +1,17 @@
+/**
+Creative Commons Legal Code
+
+CC0 1.0 Universal
+
+    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
+    LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN
+    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
+    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
+    REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS
+    PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
+    THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED
+    HEREUNDER.
+*/
 // E10.2, pag. 531
 // Da "Foundations of Computer Science: C Edition", Aho, Ullmann
 //
@@ -14,7 +28,7 @@
 // indipendentemente da ciò che segue la 'u'.
 //
 // Note per il Copyright:
-//   - l'automa searchPattern è rilasciato sotto GNU GPL.
+//   - l'automa searchPattern è rilasciato sotto licenza CC0 1.0 Universal.
 //   - l'implementazione dell'automa findChar è una traduzione in Golang
 //     dell'automa findChar dell'opera "Foundations of Computer Science"
 //     di Aho e Ullmann.

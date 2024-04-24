@@ -122,7 +122,7 @@ func stringsFromBuffer(buffer []byte) {
 func searchPattern(w string) bool {
 
 	if len(w) == 0 {
-		return true // Se la parola è vuota, restituisce true.
+		return false // Se la parola è vuota, restituisce true.
 	}
 
 	var q rune
@@ -176,7 +176,7 @@ func gotoQ0(r rune) rune {
 		return 6
 	}
 
-	// Mantieni lo stato q0.
+	// Per ogni altro carattere mantiene lo stato q0.
 	return 0
 }
 
@@ -193,7 +193,7 @@ func gotoQ1(r rune) rune {
 		return 6
 	}
 
-	// Mantieni lo stato q1
+	// Per ogni altro carattere mantiene lo stato q1
 	return 1
 }
 
@@ -205,7 +205,7 @@ func gotoQ2(r rune) rune {
 		return 3
 	}
 
-	if r == 'o' || r == 'u' {
+	if r == 'a' || r == 'o' || r == 'u' {
 		// Transita allo stato q6 di non accettazione.
 		return 6
 	}
@@ -222,7 +222,7 @@ func gotoQ3(r rune) rune {
 		return 4
 	}
 
-	if r == 'u' {
+	if r == 'a' || r == 'e' || r == 'u' {
 		// Transita allo stato q6 di non accettazione.
 		return 6
 	}
@@ -237,6 +237,11 @@ func gotoQ4(r rune) rune {
 	if r == 'u' {
 		// Transita allo stato di accettazione q5.
 		return 5
+	}
+
+	if r == 'a' || r == 'e' || r == 'i' {
+		// Transita allo stato q6 di non accettazione
+		return 6
 	}
 
 	// Mantieni lo stato q4.

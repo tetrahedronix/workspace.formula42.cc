@@ -122,9 +122,10 @@ func stringsFromBuffer(buffer []byte) {
 func searchPattern(w string) bool {
 
 	if len(w) == 0 {
-		return false // Se la parola è vuota, restituisce true.
+		return false // Se la parola è vuota, restituisce falso.
 	}
 
+	// Inizializzaione dell'automa.
 	var q rune
 
 	for _, r := range w {

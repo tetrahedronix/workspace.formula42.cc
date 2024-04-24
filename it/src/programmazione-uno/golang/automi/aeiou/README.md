@@ -49,7 +49,8 @@ transita o permane se viene ricevuta in input rispettivamente la vocale `a`, `e`
 `i`, `o`, `u`. Vi è uno stato speciale `q6` di non accettazione, dove l'automa
 transita ogni qualvolta viene ricevuta in input una vocale che è di ordine
 lessicografico superiore alla vocale rappresentata dal corrente stato dell'automa.
-Infine, lo stato di accettazione `q5` permette all'automa di terminare il riconoscimento della parola con le vocali in ordine lessicografico.
+Infine, lo stato di accettazione `q5` permette all'automa di terminare il
+riconoscimento della parola con le vocali in ordine lessicografico.
 
 La funzione di transizione δ accetta come input una coppia `(q,σ)` dove q è
 lo stato attuale dell'automa e σ è un simbolo d'input dell'alfabeto Σ. Ci sono
@@ -120,22 +121,46 @@ rispettano un certo schema di presenza delle vocali in ordine lessicografico.
 
 ## Esempi
 
-Esempi di parole accettate dall'automa
+Esempi di parole accettate dall'automa presenti in `aeiou_test.go`
 
 1. `""`. La parola vuota ε non è accettata dall'automa. In una implementazione
 di un automa deterministico per riconoscere le vocali in ordine lessicografico,
 non è prevista l'accettazione della parola vuota ε. Questo è dovuto al fatto che
 un automa deterministico opera su una serie di stati e transizioni definite,
-senza ε-transizioni che consentono il passaggio diretto tra gli stati senza
-input. Poiché la parola vuota non contiene alcun input, non esiste uno stato
+senza ε-transizioni che consentono il passaggio diretto tra gli stati in assenza
+di input. Poiché la parola vuota non contiene alcun input, non esiste uno stato
 di accettazione che possa riconoscerla. Di conseguenza, l'automa `aeiou` non
-accetta tale parola e opera esclusivamente su stringhe non vuote contenenti
-le vocali in ordine lessicografico. Tuttavia nella sua implementazione viene
-aggiunto uno *stato fittizio* che rappresenta una situazione di non-accettazione
-raggiungibile dall'inizio solo se l'input è la parola vuota ε, senza 
-violare la definizione di automa a stati finiti deterministico.
+accetta tale parola e opera esclusivamente su stringhe non vuote contenenti le
+vocali in ordine lessicografico. Tuttavia, nell'implementazione di `aeiou`
+viene aggiunto uno *stato fittizio* che rappresenta una situazione di
+non-accettazione raggiungibile dall'inizio solo se l'input è la parola vuota ε.
+Questa soluzione non viola la definizione di automa a stati finiti deterministico,
+poiché quando viene controllata la presenza della parola vuota, l'automa non è
+stato ancora "inizializzato".
 
-2. 
+2. "abstemious". Questa parola contiene tutte e cinque le vocali in ordine
+lessicografico e pertanto è accettata dall'automa nel seguente modo:
+  * Su input `a`, avviene la transizione `δ(q0,a)=q1`, quindi l'automa passa
+  dallo stato `q0` allo stato `q1`.
+  * Quando vengono lette le consonanti `b`, `s`, `t`, l'automa rimane nello
+  stato `q1` perché le consonanti non influenzano l'ordine lessicografico
+  richiesto per le vocali: pertanto si ha `δ(q1,b)=q1`, `δ(q1,s)=q1`, `δ(q1,t)=q1`.
+  * Su input `e`, avviene la transizione `δ(q1,e)=q2`. Nello stato `q2`,
+  l'ordine lessicografico è rispettato, anche se la sequenza di vocali cercata
+  dall'automa è parziale.
+  * Viene letto il simbolo `m`, con la transizione `δ(q2,m)=q2`.
+  * Su input `i`, l'automa si sposta allo stato `q3` con la transizione
+  `δ(q2,i)=q3`. In `q3`, l'automa presumibilmente si aspetta di poter leggere
+  la vocale successiva `o` dopo aver incontrato le prime tre vocali.
+  * I due simboli successivi sono le vocali `o` e `u`, che determinano le
+  transizioni `δ(q3,o)=q4` e `δ(q4,u)=q5`. Ora l'automa si trova nello stato
+  finale di accettazione. Non è necessario leggere il simbolo successivo dato
+  che è stata rilevata una sequenza completa di vocali in ordine lessicografico.
+
+3. "zoo". Questa parola è rifiutata dall'automa in quanto non viene mai
+raggiunto lo stato finale `q5`. Su input `z` avviene la transizione `δ(q0,z)=q0`.
+Successivamente, la transizione `δ(q0,o)=q6` su input `o` porta l'automa
+allo stato q6 di non accettazione, dal quale non può più uscire.
 
 ## Codice sorgente
 
@@ -233,6 +258,7 @@ func searchPattern(w string) bool {
 		return false // Se la parola è vuota, restituisce true.
 	}
 
+	// INizializzazione dell'automa.
 	var q rune
 
 	for _, r := range w {

@@ -68,6 +68,30 @@ casi possibili di transizione in `q6`, per esempio qualora venga valutata una
 `δ(q4,a)`: nello stato `q4` su input `a` l'automa ha già incontrato le prime
 quattro vocali e non è ammessa una ripetizione di questo simbolo.
 
+## Diagramma di transizione
+
+![Diagramma di transizione automa `aeiou`](./asset/diagramma.svg)
+
+## Tabella di transizione
+
+```
+       |   a   |   e   |   i   |   o   |   u   |  Σ\{a,e,i,o,u}
+=======|=======|=======|=======|=======|=======|===========
+ +q0   |  q1   |  q6   |  q6   |  q6   |  q6   |    q0
+-----------------------------------------------------------
+  q1   |  q1   |  q2   |  q6   |  q6   |  q6   |    q1
+-----------------------------------------------------------
+  q2   |  q6   |  q2   |  q3   |  q6   |  q6   |    q2
+-----------------------------------------------------------
+  q3   |  q6   |  q6   |  q3   |  q4   |  q6   |    q3
+-----------------------------------------------------------
+  q4   |  q6   |  q6   |  q6   |  q4   |  q5   |    q4
+-----------------------------------------------------------
+ *q5   |  q5   |  q5   |  q5   |  q5   |  q5   |    q5
+-----------------------------------------------------------
+  q6   |  q6   |  q6   |  q6   |  q6   |  q6   |    q6
+```
+
 ## Comportamento atteso del programma
 
 Il programma `aeiou` implementa un automa a stati finiti per verificare se
@@ -94,30 +118,6 @@ file soddisfa i criteri di accettazione dell'automa e stampa il risultato.
 
 In sostanza, il programma serve a verificare se le parole contenute in un file
 rispettano un certo schema di presenza delle vocali in ordine lessicografico.
-
-## Diagramma di transizione
-
-![Diagramma di transizione automa `aeiou`](./asset/diagramma.svg)
-
-## Tabella di transizione
-
-```
-       |   a   |   e   |   i   |   o   |   u   |  Σ\{a,e,i,o,u}
-=======|=======|=======|=======|=======|=======|===========
- +q0   |  q1   |  q6   |  q6   |  q6   |  q6   |    q0
------------------------------------------------------------
-  q1   |  q1   |  q2   |  q6   |  q6   |  q6   |    q1
------------------------------------------------------------
-  q2   |  q6   |  q2   |  q3   |  q6   |  q6   |    q2
------------------------------------------------------------
-  q3   |  q6   |  q6   |  q3   |  q4   |  q6   |    q3
------------------------------------------------------------
-  q4   |  q6   |  q6   |  q6   |  q4   |  q5   |    q4
------------------------------------------------------------
- *q5   |  q5   |  q5   |  q5   |  q5   |  q5   |    q5
------------------------------------------------------------
-  q6   |  q6   |  q6   |  q6   |  q6   |  q6   |    q6
-```
 
 ## Esempi
 

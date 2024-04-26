@@ -1,14 +1,14 @@
 ## Istruzioni
 
-1. Il seguente comando compila il programma `aeiou` con il compilatore `go` e
-produce l'eseguibile `aeiou`
+1. Il seguente comando compila il programma `unopari` con il compilatore `go` e
+produce l'eseguibile `unopari`
 
 ```
 go build unopari.go
 
 ```
 
-oppure per eseguire il programma `aeiou` senza costruire l'eseguibile:
+oppure per eseguire il programma `unopari` senza costruire l'eseguibile:
 
 ```
 go run unopari.go

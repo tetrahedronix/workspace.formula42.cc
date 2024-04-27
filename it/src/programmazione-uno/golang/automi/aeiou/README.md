@@ -121,7 +121,8 @@ rispettano un certo schema di presenza delle vocali in ordine lessicografico.
 
 ## Esempi
 
-Esempi di parole accettate e rifiutate dall'automa presenti in `aeiou_test.go`
+Simulazione per mezzo di esempi con parole accettate e rifiutate dall'automa
+presenti in `aeiou_test.go`
 
 1. `""`. La parola vuota ε non è accettata dall'automa. In una implementazione
 di un automa deterministico per riconoscere le vocali in ordine lessicografico,

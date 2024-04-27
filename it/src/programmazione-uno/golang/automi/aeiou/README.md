@@ -72,6 +72,10 @@ quattro vocali e non è ammessa una ripetizione di questo simbolo.
 
 ![Diagramma di transizione automa `aeiou`](./asset/diagramma.svg)
 
+🟥 Stato iniziale.
+🟩 Stato di accettazione.
+🟦 Stato speciale di non accettazione.
+
 ## Tabella di transizione
 
 ```

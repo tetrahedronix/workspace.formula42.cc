@@ -4,8 +4,6 @@
 # Unignore all with extensions
 !*.tex
 !*.pdf
-!*.toc
-!*.aux
 !*.bib
 !*.md
 

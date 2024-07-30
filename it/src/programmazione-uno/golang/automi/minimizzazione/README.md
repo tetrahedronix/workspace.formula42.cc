@@ -30,6 +30,7 @@ definita come segue
     - Si crea una mappa delle classi di equivalenza per raggruppare gli stati
     indistinguibili insieme.
 
+(Continua in Palano 14)
 
 ---
 

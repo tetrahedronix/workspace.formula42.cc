@@ -5,14 +5,8 @@
 1. [`introduzione`](./introduzione/) La directory introduzione contiene una
 serie di esercizi introduttivi in linguaggio Go che coprono vari concetti
 fondamentali dell'informatica.
-2. [`algebra`](./algebra)] La directory algebra contiene una serie di esercizi
-pratici sui sistemi di numeriazione e algoritmi fondamentali per risolvere
-problemi di algebra.
-3. [`moduli`](./moduli/) Introduzione ai moduli in Go, una caratteristica
+2. [`moduli`](./moduli/) Introduzione ai moduli in Go, una caratteristica
 importante per la gestione delle dipendenze e la distribuzione dei pacchetti.
-4. [`automi`](./automi/) La directory automi contiene una serie di esercizi
-che si concentrano sulla teoria degli automi, un campo fondamentale
-nell'informatica teorica.
 
 ## Laboratorio di programmazione in Go
 

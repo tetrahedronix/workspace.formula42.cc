@@ -35,13 +35,10 @@ Note operative:
 
 ### Osservazioni
 
-* Go impone uno **stile di formattazione rigido**, rispettabile automaticamente tramite `gofmt`.
+* Go impone uno **stile di formattazione rigido**, applicabile automaticamente tramite `gofmt`.
 * La gestione degli **import** può essere semplificata con `goimports`, che aggiunge o rimuove pacchetti inutilizzati e formatta il codice.
 
 ### Applicazioni e spunti
 
 Questo schema base è sufficiente per comprendere la struttura di un programma Go semplice, come il classico "Hello World", e costituisce la base per sviluppi più complessi in applicazioni Web, enterprise o strumenti a linea di comando.
 
----
-
-Se vuoi, posso produrre una **versione ancora più schematica e operativa**, dove ogni concetto viene direttamente collegato a un mini-esempio di codice Go pronto da eseguire. Vuoi che lo faccia?

@@ -34,6 +34,11 @@ func main() {
 	// NewTensor() deduce automaticamente la forma (2x3) e il tipo (float32) dal
 	// contesto
 	tensorA, err := tf.NewTensor(MatrixA)
+
+	if err != nil {
+		panic(err)
+	}
+
 	tensorB, err := tf.NewTensor(MatrixB)
 
 	if err != nil {

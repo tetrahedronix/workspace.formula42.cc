@@ -2,7 +2,7 @@
 
 ## Indice
 
-1. [`Tensorflow`](./tensorflow/spazi-vettoriali/): Applicazioni TensorFlow con Go
+1. [`Tensorflow`](./tensorflow/): Applicazioni TensorFlow con Go
 
 ## Machine Learning in Go
 

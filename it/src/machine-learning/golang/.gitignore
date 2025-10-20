@@ -11,3 +11,5 @@
 !*_*.go
 
 !.gitignore
+.gemini
+.specify

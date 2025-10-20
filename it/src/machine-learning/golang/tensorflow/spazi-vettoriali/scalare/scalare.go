@@ -106,9 +106,7 @@ func MoltPerScalare(a, b *tf.Tensor) (*tf.Tensor, error) {
 
 	// Esegue il grafo
 	// Inizializza una mappa vuota per i feed e una slice vuota per i target
-	emptyFeeds := make(map[tf.Output]*tf.Tensor)
-	emptyTargets := []*tf.Operation{}
-	results, err := sess.Run(emptyFeeds, []tf.Output{product}, emptyTargets)
+	results, err := sess.Run(nil, []tf.Output{product}, nil)
 	if err != nil {
 		return nil, fmt.Errorf("errore nell'esecuzione della sessione: %w", err)
 	}

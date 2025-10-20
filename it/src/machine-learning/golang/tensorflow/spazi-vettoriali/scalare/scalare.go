@@ -17,7 +17,7 @@ func main() {
 	// Uno scalare è un elemento di un campo K, in questo caso il campo dei
 	// numeri reali e il campo Z2. I numeri reali sono rappresentati come
 	// valori floating point a 32 bit; per questioni di semplicità il campo Z2 è
-	// invece rappresentato con un int32, ma sue le operazioni non sono definite.
+	// invece rappresentato con un int32, ma le sue operazioni non sono definite.
 	var (
 		ScalareAlfa float32 = 3.8
 		ScalareBeta int32   = 1
@@ -40,7 +40,7 @@ func main() {
 	}
 
 	// Semplici istruzioni di debug: si stampano gli attributi del tensore:
-	// * Il suo tipo, cioè 1 corrispondente
+	// * Il suo tipo, cioè 1 corrispondente a FLOAT32
 	// * Il valore, cioè il numero reale rappresentato in floating point
 	// * La sua forma, corrispondente alla dimensione della rappresentazione interna
 	// * Il rank, ossia il numero di indici
@@ -68,12 +68,12 @@ func main() {
 // Accetta due tensori (*tf.Tensor) e restituisce un nuovo tensore
 // che rappresenta il loro prodotto.
 func MoltPerScalare(a, b *tf.Tensor) (*tf.Tensor, error) {
-	// Creare un nuovo grafo per l'operazione
+	// Crea un nuovo grafo per l'operazione
 	g := tf.NewGraph()
 	if g == nil { // Added check for NewGraph
 		return nil, fmt.Errorf("tf.NewGraph() ha restituito un grafo nullo")
 	}
-	// Definire le operazioni nel grafo
+	// Definisce le operazioni nel grafo
 	s := op.NewScopeWithGraph(g) // s is the main scope
 
 	// Create sub-scopes for unique naming of Const operations
@@ -81,14 +81,14 @@ func MoltPerScalare(a, b *tf.Tensor) (*tf.Tensor, error) {
 	scopeB := s.SubScope("ConstB")
 	scopeMul := s.SubScope("MulProduct") // Also for Mul
 
-	// Converti *tf.Tensor in tf.Output usando op.Const all'interno dei sub-scope
+	// Converte *tf.Tensor in tf.Output usando op.Const all'interno dei sub-scope
 	outputA := op.Const(scopeA, a)
 	outputB := op.Const(scopeB, b)
 
-	// Esegui la moltiplicazione usando op.Mul all'interno del sub-scope
+	// Esegue la moltiplicazione usando op.Mul all'interno del sub-scope
 	product := op.Mul(scopeMul, outputA, outputB)
 
-	// Aggiungere un controllo per gli errori accumulati nello scope
+	// Aggiunge un controllo per gli errori accumulati nello scope
 	if err := s.Err(); err != nil {
 		return nil, fmt.Errorf("errore durante la costruzione del grafo nello scope: %w", err)
 	}
@@ -104,7 +104,7 @@ func MoltPerScalare(a, b *tf.Tensor) (*tf.Tensor, error) {
 	}
 	defer sess.Close()
 
-	// Eseguire il grafo
+	// Esegue il grafo
 	// Inizializza una mappa vuota per i feed e una slice vuota per i target
 	emptyFeeds := make(map[tf.Output]*tf.Tensor)
 	emptyTargets := []*tf.Operation{}
@@ -121,9 +121,6 @@ func MoltPerScalare(a, b *tf.Tensor) (*tf.Tensor, error) {
 }
 
 /*
-
-
-
 ## Note aggiuntive
 
 ### Prodotto per Scalare in TensorFlow con Graft

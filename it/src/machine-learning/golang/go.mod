@@ -1,6 +1,6 @@
-module gitlab.com/tetrahedronix/notes.formula42.cc/SCARTAFACCIO/src/machine-learning/golang/tensorflow/vettori/matrice
+module gitlab.com/tetrahedronix/workspace.formula42.cc/it/src/machine-learning/golang
 
-go 1.24.5
+go 1.25.2
 
 require github.com/wamuir/graft v0.10.0
 

@@ -13,6 +13,6 @@
 # Riferimenti
 
 * [Documentazione ufficiale](https://golang.org/doc/) di Go 
-* [The Go Programming Language](https://griesemer.github.io/gook-book/) by Robert Griesemer 
-* [Go binding per Tensorflow](https://pkg.go.dev/github.com/wam)
+* [The Go Programming Language Specification](https://go.dev/ref/spec)
+* [Go binding per Tensorflow](https://pkg.go.dev/github.com/wamuir/graft)
 * [Introduzione a Ggml](https://huggingface.co/blog/introduction-to-ggml) by Gerganov at Al.
